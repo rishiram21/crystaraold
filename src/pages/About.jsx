@@ -8,7 +8,7 @@ function About() {
   }, []); // Empty dependency array to run on component mount
 
   return (
-    <div className="max-w-4xl mx-auto m-5">
+    <div className="max-w-4xl mx-auto m-20">
       <h1 className="text-4xl font-bold mb-6 text-purple-700">About Crystara Sugar</h1>
 
       {/* Main Content */}

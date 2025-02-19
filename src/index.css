@@ -1,10 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+*{
+    font-family: "Outfit", serif;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-*{
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
+
 body {
     background-color: #f3e8ff; /* Light Purple */
   }

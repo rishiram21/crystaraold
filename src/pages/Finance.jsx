@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
 
-function Corporate() {
+function Finance() {
   // Function to handle scrolling to top before navigation
   const handleScrollToTop = () => {
     window.scrollTo(0, 0); // Scroll to the top of the page
   };
 
   return (
-    <div className="max-w-4xl mx-auto text-center m-5">
+    <div className="max-w-4xl mx-auto text-center m-20">
       <h1 className="text-4xl font-bold mb-6 text-purple-700">Welcome to Crystara Sugar Pvt Ltd</h1>
       <p className="text-lg text-gray-600 mb-6">
         Crystara Sugar Pvt Ltd is a leading player in the global sugar industry, committed to providing premium quality sugar 
@@ -89,4 +89,4 @@ function Corporate() {
   );
 }
 
-export default Corporate;
+export default Finance;

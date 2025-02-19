@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
 
-function Business() {
+function Offering() {
   // Function to handle scrolling to top before navigation
   const handleScrollToTop = () => {
     window.scrollTo(0, 0); // Scroll to the top of the page
   };
 
   return (
-    <div className="max-w-4xl mx-auto text-center m-5">
+    <div className="max-w-4xl mx-auto text-center m-20">
       <h1 className="text-4xl font-bold mb-6 text-purple-700">Crystara Sugar Business</h1>
       <p className="text-lg text-gray-600 mb-6">
         Leading the sugar industry through innovation, sustainability, and global reach.
@@ -84,4 +84,4 @@ function Business() {
   );
 }
 
-export default Business;
+export default Offering;

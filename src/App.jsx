@@ -4,8 +4,9 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import About from './pages/About'
 import Contact from './pages/Contact'
-import Business from './pages/Business'
-import Corporate from './pages/Corporate'
+import Offering from './pages/Offering'
+import Finance from './pages/FInance'
+
 
 function App() {
   return (
@@ -17,8 +18,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/business" element={<Business />} />
-            <Route path="/corporate" element={<Corporate />} />
+            <Route path="/offering" element={<Offering />} />
+            <Route path="/finance" element={<Finance />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
