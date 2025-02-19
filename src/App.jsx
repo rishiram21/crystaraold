@@ -5,7 +5,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import Offering from './pages/Offering'
-import Finance from './pages/FInance'
+import Finance from './pages/Finance'
 
 
 function App() {
