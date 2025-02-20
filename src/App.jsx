@@ -3,9 +3,10 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import About from './pages/About'
-import Contact from './pages/Contact'
+import Media from './pages/Media'
 import Offering from './pages/Offering'
 import Finance from './pages/Finance'
+import Contact from './pages/Contact'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/offering" element={<Offering />} />
             <Route path="/finance" element={<Finance />} />
+            <Route path="/media" element={<Media />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
