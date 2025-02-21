@@ -18,25 +18,20 @@ function Finance() {
         {/* Hero Section with Background Image */}
         <motion.div
           className="relative w-full h-56 flex items-center rounded-lg shadow-md mb-5 bg-cover bg-center"
-          style={{ backgroundImage: "url('/offeringimg.jpg')" }}
+          style={{ backgroundImage: "url('/financeimg.jpg')" }}
           initial="hidden"
           animate="visible"
           variants={fadeIn}
         >
           <div className="absolute inset-0 bg-black bg-opacity-50 rounded-lg"></div>
-          <div className="relative w-full flex flex-col md:flex-row items-center p-8">
-            <h1 className="text-6xl font-bold text-white">Finance</h1>
+          <div className="relative w-full flex flex-col md:flex-row items-center p-8 text-center">
+            <h1 className="text-4xl font-bold text-white text">Finance</h1>
           </div>
         </motion.div>
 
         {/* 🔹 Navigation Tabs */}
         <div className="flex flex-wrap gap-3 md:gap-4 justify-center mb-6">
-          {[
-            "Corporate Governance", "Policies", "Financial Results",
-            "Annual Report", "Group Companies", "Annual Return",
-            "Shareholding Pattern", "Investor Grievance Redressals",
-            "Offer Documents", "Stock Exchange Disclosures"
-          ].map((tab, index) => (
+          {["Corporate Governance", "Policies", "Annual Report", "Offer Documents", "Stock Exchange Disclosures"].map((tab, index) => (
             <button
               key={index}
               className={`px-4 py-2 rounded-md shadow-md text-sm md:text-base 
@@ -52,7 +47,10 @@ function Finance() {
           {[
             { title: "Board of Directors", file: "board.pdf" },
             { title: "Key Managerial Personnel", file: "key_personnel.pdf" },
-            { title: "Committee Board", file: "committee_board.pdf" }
+            { title: "Committee Board", file: "committee_board.pdf" },
+            { title: "Financial Statements", file: "financial_statements.pdf" },
+            { title: "Annual Reports", file: "annual_reports.pdf" },
+            { title: "Stockholder Information", file: "stockholder_info.pdf" }
           ].map((item, index) => (
             <motion.div
               key={index}
@@ -65,7 +63,7 @@ function Finance() {
               <h3 className="text-lg font-semibold text-gray-900">{item.title}</h3>
               <a
                 href={`/${item.file}`} download
-                className="block mt-4 text-blue-700 font-semibold text-sm hover:underline flex justify-center items-center"
+                className="mt-4 text-blue-700 font-semibold text-sm hover:underline flex justify-center items-center"
               >
                 DOWNLOAD <span className="ml-1 text-xl">⬇</span>
               </a>

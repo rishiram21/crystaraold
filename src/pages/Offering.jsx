@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 
 function Offering() {
@@ -6,105 +6,96 @@ function Offering() {
     window.scrollTo(0, 0);
   }, []);
 
-  // Function to animate numbers
-  const useCounter = (end, duration) => {
-    const [count, setCount] = useState(0);
-
-    useEffect(() => {
-      let start = 0;
-      const increment = Math.ceil(end / (duration / 50));
-
-      const timer = setInterval(() => {
-        start += increment;
-        if (start >= end) {
-          start = end;
-          clearInterval(timer);
-        }
-        setCount(start);
-      }, 50);
-
-      return () => clearInterval(timer);
-    }, [end, duration]);
-
-    return count;
+  // Animation for fade-in effect
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
   };
 
-  // Animated numbers
-  const organicSugar = useCounter(100, 2000);
-  const productVariants = useCounter(50, 5000);
-  const customerSupport = useCounter(24, 5000);
-
-  // Animation Variants
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
-  };
-
-  const fadeInText = {
-    hidden: { opacity: 0, x: -30 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
-  };
+  // Product Listings (Added 3 More)
+  const products = [
+    {
+      name: "White Sugar",
+      image: "/white-sugar.jpg",
+      description: "MEIR Commodities offers multiple types of sugar, each serving distinct uses in both industrial and household applications."
+    },
+    {
+      name: "Brown Sugar",
+      image: "/brown-sugar.jpg",
+      description: "Khandsari is a type of unrefined raw sugar that retains more natural minerals and molasses than refined sugar."
+    },
+    {
+      name: "Jaggery",
+      image: "/jaggery.jpg",
+      description: "Jaggery is a traditional, non-centrifugal cane sugar consumed in Asia and Africa, known for its rich taste and health benefits."
+    },
+    {
+      name: "s30 Sugar",
+      image: "/s30-sugar.jpg",
+      description: "Muscovado is an unrefined dark brown sugar with a strong molasses flavor, perfect for baking and sweetening drinks."
+    },
+    {
+      name: "Raw Sugar",
+      image: "/raw-sugar.jpg",
+      description: "Raw sugar is minimally processed and retains more natural nutrients than refined sugar, giving it a slightly golden hue."
+    },
+    {
+      name: "m30 Sugar",
+      image: "/m30-sugar.jpg",
+      description: "Demerara sugar has large golden crystals and a crunchy texture, commonly used in coffee and desserts."
+    }
+  ];
 
   return (
     <div className="bg-purple min-h-screen py-12">
-      <div className="container mx-auto px-20 py-8">
+      <div className="container mx-auto px-6 md:px-20 py-8">
         
-        {/* Hero Section with Background Image */}
+        {/* Hero Section */}
         <motion.div
-          className="relative w-full h-56 flex items-center rounded-lg shadow-md mb-5 bg-cover bg-center"
+          className="relative w-full h-56 flex items-center rounded-lg shadow-md mb-8 bg-cover bg-center"
           style={{ backgroundImage: "url('/offeringimg.jpg')" }}
           initial="hidden"
           animate="visible"
-          variants={fadeInUp}
+          variants={fadeIn}
         >
           <div className="absolute inset-0 bg-black bg-opacity-50 rounded-lg"></div>
-          <div className="relative w-full flex flex-col md:flex-row items-center p-8">
-            <h1 className="text-6xl font-bold text-white">Our Offerings</h1>
+          <div className="relative w-full flex flex-col items-center p-8 text-center">
+            <h1 className="text-3xl md:text-6xl font-bold text-white">Our Offerings</h1>
           </div>
         </motion.div>
 
-        {/* Statistics Section */}
-        <motion.div className="grid md:grid-cols-3 gap-6 mb-12" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
-          <div className="bg-white p-6 rounded-lg shadow-md text-center">
-            <motion.div className="text-3xl font-bold text-purple-700" variants={fadeInUp}>{organicSugar}%</motion.div>
-            <p className="text-gray-600">Organic Sugar</p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-md text-center">
-            <motion.div className="text-3xl font-bold text-purple-700" variants={fadeInUp}>{productVariants}+</motion.div>
-            <p className="text-gray-600">Product Variants</p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-md text-center">
-            <motion.div className="text-3xl font-bold text-purple-700" variants={fadeInUp}>{customerSupport}/7</motion.div>
-            <p className="text-gray-600">Customer Support</p>
-          </div>
-        </motion.div>
+        {/* Products Section in Grid Layout with Hover Effect */}
+        <motion.div 
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
+          variants={fadeIn}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          {products.map((product, index) => (
+            <motion.div
+              key={index}
+              className="relative bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer group"
+              whileHover={{ scale: 1.05 }}
+            >
+              {/* Product Image */}
+              <img 
+                src={product.image} 
+                alt={product.name} 
+                className="w-full h-64 object-cover transition-all duration-500 group-hover:opacity-50"
+              />
 
-        {/* Product Categories Section */}
-        <motion.div className="bg-white p-6 rounded-lg shadow-md mb-8" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInText}>
-          <h2 className="text-2xl font-semibold text-purple-700 mb-4">Our Product Categories</h2>
-          <ul className="list-disc pl-6 text-gray-600">
-            <li className="mb-2">Organic Sugar</li>
-            <li className="mb-2">Refined White Sugar</li>
-            <li className="mb-2">Brown Sugar</li>
-            <li className="mb-2">Liquid Sugar & Syrups</li>
-            <li className="mb-2">Sugarcane Derivatives</li>
-          </ul>
-        </motion.div>
+              {/* Product Name */}
+              <h3 className="absolute inset-0 flex items-center justify-center text-2xl font-bold text-white bg-black bg-opacity-30 group-hover:bg-opacity-50 transition-all duration-500">
+                {product.name}
+              </h3>
 
-        {/* Why Choose Us Section */}
-        <motion.div className="bg-white p-6 rounded-lg shadow-md mb-8" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInText}>
-          <h2 className="text-2xl font-semibold text-purple-700 mb-4">Why Choose Crystara Sugar?</h2>
-          <p className="text-gray-600">
-            We prioritize <strong>quality, sustainability, and innovation</strong> in our production processes. Our sugar products are trusted by top food industries and households alike.
-          </p>
-        </motion.div>
-
-        {/* Sustainability Commitment Section */}
-        <motion.div className="bg-white p-6 rounded-lg shadow-md mb-8" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInText}>
-          <h2 className="text-2xl font-semibold text-purple-700 mb-4">Our Sustainability Commitment</h2>
-          <p className="text-gray-600">
-            We are committed to <strong>eco-friendly farming and production</strong> processes to minimize our carbon footprint and promote a healthier environment.
-          </p>
+              {/* Hidden Description (Shows on Hover) */}
+              <div className="absolute inset-0 flex items-center justify-center text-center p-4 text-white bg-black bg-opacity-80 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                <p className="text-sm">{product.description}</p>
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
 
       </div>

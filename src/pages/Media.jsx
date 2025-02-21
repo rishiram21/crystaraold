@@ -2,104 +2,90 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const events = [
-  { title: "Title Here", image: "/event1.jpg" },
-  { title: "Title Here", image: "/event2.jpg" },
-  { title: "Title Here", image: "/event3.jpg" },
-  { title: "Title Here", image: "/event4.jpg" },
-  { title: "Title Here", image: "/event5.jpg" },
-  { title: "Title Here", image: "/event6.jpg" },
+  { title: "Event 1", image: "/event1.jpg" },
+  { title: "Event 2", image: "/event2.jpg" },
+  { title: "Event 3", image: "/event3.jpg" },
+  { title: "Event 4", image: "/event4.jpg" },
+  { title: "Event 5", image: "/event5.jpg" },
+  { title: "Event 6", image: "/event6.jpg" },
 ];
 
 const videos = [
-  { title: "Title Here", thumbnail: "/videogallery1.jpg", src: "/videogallery1.mp4" },
-  { title: "Title Here", thumbnail: "/videogallery2.jpg", src: "/videogallery2.mp4" },
-  { title: "Title Here", thumbnail: "/videogallery3.jpg", src: "/videogallery3.mp4" },
+  { title: "Video 1", thumbnail: "/video1.jpg", src: "/videogallery1.mp4" },
+  { title: "Video 2", thumbnail: "/video2.jpg", src: "/videogallery2.mp4" },
+  { title: "Video 3", thumbnail: "/video3.jpg", src: "/videogallery3.mp4" },
 ];
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
+};
 
 function Media() {
   const [activeTab, setActiveTab] = useState("events");
+  const [loading, setLoading] = useState(true);
+  const [playingVideo, setPlayingVideo] = useState(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    setTimeout(() => setLoading(false), 500);
   }, []);
 
-  const fadeIn = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
-  };
-
   return (
-    <div className="bg-purple min-h-screen py-12">
-      <div className="container mx-auto px-20 py-8">
+    <motion.div className="bg-purple min-h-screen py-12" initial="hidden" animate="visible" variants={staggerContainer}>
+      <div className="container mx-auto px-6 md:px-20 py-8">
         
-        {/* Hero Section */}
-        <motion.div
-          className="relative w-full h-56 flex items-center rounded-lg shadow-md mb-5 bg-cover bg-center"
-          style={{ backgroundImage: "url('/mediaimg.jpg')" }}
-          initial="hidden"
-          animate="visible"
-          variants={fadeIn}
-        >
+        <motion.div className="relative w-full h-56 flex items-center rounded-lg shadow-md mb-5 bg-cover bg-center" style={{ backgroundImage: "url('/mediaimg.jpg')", minHeight: "200px" }} variants={fadeInUp}>
           <div className="absolute inset-0 bg-black bg-opacity-50 rounded-lg"></div>
-          <div className="relative w-full flex flex-col md:flex-row items-center p-8">
-            <h1 className="text-6xl font-bold text-white">Media</h1>
-          </div>
+          <h1 className="relative text-4xl md:text-6xl font-bold text-white mx-auto">Media</h1>
         </motion.div>
 
-        {/* Tabs */}
         <div className="flex justify-center mb-6">
-          <button
-            className={`px-6 py-2 text-lg font-semibold rounded-l-md ${activeTab === "events" ? "bg-purple-700 text-white" : "bg-gray-300 text-gray-700"}`}
-            onClick={() => setActiveTab("events")}
-          >
+          <motion.button className={`px-6 py-2 text-lg font-semibold rounded-l-md transition-all ${activeTab === "events" ? "bg-purple-700 text-white" : "bg-gray-300 text-gray-700 hover:bg-gray-400"}`} onClick={() => setActiveTab("events")} whileTap={{ scale: 0.95 }}>
             📸 Event Gallery
-          </button>
-          <button
-            className={`px-6 py-2 text-lg font-semibold rounded-r-md ${activeTab === "videos" ? "bg-purple-700 text-white" : "bg-gray-300 text-gray-700"}`}
-            onClick={() => setActiveTab("videos")}
-          >
+          </motion.button>
+          <motion.button className={`px-6 py-2 text-lg font-semibold rounded-r-md transition-all ${activeTab === "videos" ? "bg-purple-700 text-white" : "bg-gray-300 text-gray-700 hover:bg-gray-400"}`} onClick={() => setActiveTab("videos")} whileTap={{ scale: 0.95 }}>
             🎥 Video Gallery
-          </button>
+          </motion.button>
         </div>
 
-        {/* Event Gallery */}
-        {activeTab === "events" && (
-          <motion.div className="grid md:grid-cols-3 gap-6" initial="hidden" animate="visible" variants={fadeIn}>
-            {events.map((event, index) => (
-              <motion.div key={index} className="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-all duration-300">
-                <img src={event.image} alt={event.title} className="w-full h-56 object-cover" />
+        {loading ? (
+          <div className="text-center text-gray-500">Loading...</div>
+        ) : (
+          <motion.div className="grid md:grid-cols-3 gap-6" variants={staggerContainer}>
+            {activeTab === "events" && events.map((event, index) => (
+              <motion.div key={index} className="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-all duration-300" variants={fadeInUp}>
+                <img src={event.image} alt={event.title} className="w-full h-56 object-cover" loading="lazy" />
                 <div className="p-4">
-                  <h3 className="text-lg font-semibold text-gray-800">{event.title}</h3>
+                  <h3 className="text-lg font-semibold text-gray-800 text-center">{event.title}</h3>
+                </div>
+              </motion.div>
+            ))}
+            {activeTab === "videos" && videos.map((video, index) => (
+              <motion.div key={index} className="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-all duration-300 cursor-pointer" onClick={() => setPlayingVideo(playingVideo === index ? null : index)} variants={fadeInUp}>
+                {playingVideo === index ? (
+                  <motion.video autoPlay className="w-full h-56 object-cover">
+                    <source src={video.src} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </motion.video>
+                ) : (
+                  <motion.img src={video.thumbnail} alt={video.title} className="w-full h-56 object-cover" loading="lazy" />
+                )}
+                <div className="p-4">
+                  <h3 className="text-lg font-semibold text-gray-800 text-center">{video.title}</h3>
+                  <p className="text-sm text-gray-500">Click to {playingVideo === index ? "pause" : "play"}</p>
                 </div>
               </motion.div>
             ))}
           </motion.div>
         )}
-
-        {/* Video Gallery */}
-        {activeTab === "videos" && (
-          <motion.div className="grid md:grid-cols-3 gap-6" initial="hidden" animate="visible" variants={fadeIn}>
-            {videos.map((video, index) => (
-              <motion.div key={index} className="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-all duration-300">
-                <video 
-                autoPlay
-                  controls 
-                  className="w-full h-56 object-cover"
-                  poster={video.thumbnail} // Use the thumbnail as a preview
-                >
-                  <source src={video.src} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-                <div className="p-4">
-                  <h3 className="text-lg font-semibold text-gray-800">{video.title}</h3>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        )}
-
       </div>
-    </div>
+    </motion.div>
   );
 }
 

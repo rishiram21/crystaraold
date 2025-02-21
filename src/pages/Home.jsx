@@ -6,7 +6,7 @@ import "swiper/css/pagination";
 import React from "react";
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from "chart.js";
-import Slider from "react-slick";  // ✅ Missing import for the testimonial slider
+import Slider from "react-slick";  
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -37,12 +37,13 @@ function Home() {
 
   //Overview
   const sliderSettings = {
+    arrows: false,
     infinite: true,
-    speed: 1000,
+    speed: 3000,
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2500,
+    autoplaySpeed: 1500,
     responsive: [
       {
         breakpoint: 1024,
@@ -57,12 +58,12 @@ function Home() {
 
   // Cards Data
   const stats = [
-    { icon: "🌍", label: "Operating Since", value: "2016" },
-    { icon: "👥", label: "Over", value: "50 Employees" },
-    { icon: "🏢", label: "Offices Globally", value: "02" },
-    { icon: "📦", label: "Products Available", value: "100+" },
-    { icon: "💼", label: "Corporate Clients", value: "500+" },
-    { icon: "🚀", label: "Annual Growth Rate", value: "15%" },
+    { icon: "🌍", label: "1.Operating Since", value: "2016" },
+    { icon: "👥", label: "2.Over", value: "50 Employees" },
+    { icon: "🏢", label: "3.Offices Globally", value: "02" },
+    { icon: "📦", label: "4.Products Available", value: "100+" },
+    { icon: "💼", label: "5.Corporate Clients", value: "500+" },
+    { icon: "🚀", label: "6.Annual Growth ", value: "15%" },
   ];
 
   //Graph
@@ -111,13 +112,14 @@ function Home() {
   ];
   
   const settings = {
-    dots: true,
+    dots:true,
+    arrows: false,
     infinite: true,
-    speed: 1000,
+    speed: 2000,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000
+    autoplaySpeed: 1500
   };
 
   //News
@@ -155,9 +157,10 @@ function Home() {
   ];
   
   const settings1 = {
-    dots: true,
+    dots:true,
+    arrows: false,
     infinite: true,
-    speed: 1000,
+    speed: 2000,
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
@@ -182,193 +185,270 @@ function Home() {
           className="w-full h-full"
         >
           <SwiperSlide>
-            <img src="/imgslide1.jpg" alt="Factory 1" className="w-full h-full object-cover" />
+            <img src="/imgslide1.jpg" alt=" 1" className="w-full h-full object-cover" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="/imgslide2.jpg" alt="Factory 2" className="w-full h-full object-cover" />
+            <img src="/imgslide2.jpg" alt=" 2" className="w-full h-full object-cover" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="/imgslide3.jpg" alt="Factory 3" className="w-full h-full object-cover" />
+            <img src="/imgslide3.jpg" alt=" 3" className="w-full h-full object-cover" />
           </SwiperSlide>
+          <SwiperSlide>
+            <img src="/imgslide4.jpg" alt=" 4" className="w-full h-full object-cover" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="/imgslide5.jpg" alt=" 5" className="w-full h-full object-cover" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="/imgslide6.jpg" alt=" 6" className="w-full h-full object-cover" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="/imgslide7.jpg" alt=" 7" className="w-full h-full object-cover" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="/imgslide8.jpg" alt=" 8" className="w-full h-full object-cover" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="/imgslide9.jpg" alt=" 9" className="w-full h-full object-cover" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="/imgslide10.jpg" alt=" 10" className="w-full h-full object-cover" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="/imgslide11.jpg" alt=" 11" className="w-full h-full object-cover" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="/imgslide12.jpg" alt=" 12" className="w-full h-full object-cover" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="/imgslide13.jpg" alt=" 13" className="w-full h-full object-cover" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="/imgslide14.jpg" alt=" 14" className="w-full h-full object-cover" />
+          </SwiperSlide>
+
+
+
+
         </Swiper>
       </motion.div>
 
-      <div className="w-full h-screen max-w-7xl mx-auto py-16">
-      {/* Outer Rounded Box */}
-      <div className="bg-gray-100 p-8 rounded-2xl shadow-lg relative">
-        <h2 className="text-3xl font-bold text-purple-700 mt-12 mb-6 text-center">About Us</h2>
+      <div className="w-full max-w-7xl mx-auto mt-12 pt-16">
+  {/* About Us Section */}
+  <section className="w-full px-10 mt-12 mb-16">
+    <h2 className="text-4xl font-bold text-purple-700 text-center mt-12 mb-12">About Us</h2>
 
+    <motion.div
+      className="w-full flex flex-col items-center gap-8"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+    >
+      {/* Video Section */}
+      <motion.div
+  className="w-full flex flex-col md:flex-row items-center md:items-start gap-8"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+>
+  {/* Video Section (Left) */}
+  <motion.div className="w-full md:w-1/2" variants={fadeInLeft}>
+    <video className="w-full h-64 md:h-96 rounded-lg" autoPlay loop muted playsInline>
+      <source src="aboutvideo.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </motion.div>
+
+  {/* Content Section (Right) */}
+  <motion.div
+    className="w-full md:w-1/2 bg-opacity-90 p-6 rounded-lg border-l-4 border-purple-700"
+    variants={fadeInRight}
+  >
+    <h3 className="text-2xl font-semibold text-purple-700 mb-4">Who We Are</h3>
+    <p className="text-gray-700 text-lg">
+          Welcome to Crystara Sugar Private Limited - Sharing Sweetness to the World. 
+          We humans have a special bond with sweetness. 
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor 
+          in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt 
+          in culpa qui officia deserunt mollit anim id est laborum."
+    </p>
+  </motion.div>
+</motion.div>
+
+
+      {/* Vision & Mission Section */}
+      <motion.div
+        className="w-full flex flex-col md:flex-row items-center md:items-start gap-8"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        {/* Vision Section (Left) */}
         <motion.div
-          className="w-full flex flex-col-reverse md:flex-row items-center md:items-start gap-8"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+          className="w-full md:w-1/2 p-6 rounded-lg shadow-md border-l-4 border-purple-700"
+          variants={fadeInLeft}
         >
-          {/* Video Section - 60% */}
-          <motion.div className="w-full md:w-3/5" variants={fadeInUp}>
-          <video
-            className="w-full h-64 md:h-96"
-            autoPlay
-            loop
-            muted
-            playsInline
-          >
-            <source src="aboutvideo.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-
-          </motion.div>
-
-          {/* Content Section - 40% */}
-          <motion.div
-            className="w-full md:w-2/5 bg-white bg-opacity-90 p-6 rounded-lg shadow-md border-l-4 border-purple-700"
-            variants={fadeInText}
-          >
-            <h3 className="text-2xl font-semibold text-purple-700 mb-4">Who We Are</h3>
-            <p className="text-gray-700 text-lg mb-4">
-              Crystara Sugar Pvt Ltd is a leading manufacturer committed to delivering 
-              premium-quality sugar products through sustainable and innovative production methods.
-            </p>
-
-            {/* Key Highlights */}
-            <div className="mt-4">
-              <h4 className="text-xl font-semibold text-purple-600 mb-2">Our Vision</h4>
-              <p className="text-gray-700 text-sm mb-4">
-                To be a global leader in sugar manufacturing, known for sustainability, quality, and innovation.
-              </p>
-
-              <h4 className="text-xl font-semibold text-purple-600 mb-2">Our Mission</h4>
-              <p className="text-gray-700 text-sm mb-4">
-                To provide high-quality sugar products while maintaining eco-friendly production processes.
-              </p>
-
-              
-            </div>
-          </motion.div>
+          <h4 className="text-xl font-semibold text-purple-700 mb-2">Our Vision</h4>
+          <p className="text-gray-700 text-lg">
+            To be a global leader in sugar manufacturing, known for sustainability, quality, and innovation.
+          </p>
         </motion.div>
-      </div>
-    </div>
+
+        {/* Mission Section (Right) */}
+        <motion.div
+          className="w-full md:w-1/2 p-6 rounded-lg shadow-md border-l-4 border-purple-700"
+          variants={fadeInRight}
+        >
+          <h4 className="text-xl font-semibold text-purple-700 mb-2">Our Mission</h4>
+          <p className="text-gray-700 text-lg">
+            To provide high-quality sugar products while maintaining eco-friendly production processes.
+          </p>
+        </motion.div>
+      </motion.div>
+    </motion.div>
+  </section>
+</div>
 
 
+  {/* Company Overview Section */}
+  <section className="w-full px-10 py-16 mt-12">
+  <h2 className="text-4xl font-bold text-purple-700 text-center mt-12 mb-12">Company Overview</h2>
+
+  <div className="p-8 rounded-2xl">
+    <div className="flex flex-col md:flex-row items-center justify-between">
+      
+      {/* Overview Text */}
+      <motion.div
+        className="w-full md:w-1/2 text-left"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeInLeft}
+      >
+        <p className="text-gray-700 text-lg px-2 mb-6">
+          Welcome to Crystara Sugar Private Limited - Sharing Sweetness to the World. 
+          We humans have a special bond with sweetness.
+          Welcome to Crystara Sugar Private Limited - Sharing Sweetness to the World. 
+          We humans have a special bond with sweetness.
+    
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor 
+          in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt 
+          in culpa qui officia deserunt mollit anim id est laborum."
 
 
-      {/* 🔹 Overview Section */}
-      <div className="w-full mt-14 max-w-7xl mx-auto py-16">
-      {/* Outer Rounded Box */}
-      <div className="bg-gray-100 p-8 rounded-2xl shadow-lg">
-        <div className="flex flex-col md:flex-row items-center justify-between">
-          {/* Left Side - Overview Text */}
-          {/* <motion.div
-            className="md:w-1/2 text-left"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInLeft}
-          >
-            <h2 className="text-3xl font-bold text-purple-700 mb-4">Company Overview</h2>
-            <p className="text-gray-700 text-lg px-2 mb-6">
-              Welcome to Crystara Sugar Private Limited - Sharing Sweetness to the World. 
-              We humans have a special bond with sweetness.
-            </p>
-            <button className="bg-purple-700 text-white px-4 py-2 rounded-full flex items-center">
-              <span className="mr-2">Learn More</span>
-              <span className="text-lg">→</span>
-            </button>
-          </motion.div> */}
+        </p>
+        <button className="bg-purple-700 text-white px-4 py-2 rounded-full flex items-center">
+          <span className="mr-2">Learn More</span>
+          <span className="text-lg">→</span>
+        </button>
+      </motion.div>
 
-          {/* Right Side - Auto Slider */}
-          {/* <motion.div
-            className="md:w-1/2"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInRight}
-          >
-            <Slider {...sliderSettings}>
-              {stats.map((item, index) => (
-                <div key={index} className="px-2">
-                  <div className="bg-green-100 p-6 rounded-lg shadow-lg text-center">
-                    <div className="w-16 h-16 mx-auto bg-green-700 text-white rounded-full flex items-center justify-center text-2xl">
-                      {item.icon}
-                    </div>
-                    <h3 className="text-lg mt-4">
-                      {item.label} <span className="text-black">{item.value}</span>
-                    </h3>
+      {/* Auto Slider */}
+      <motion.div
+        className="w-full md:w-1/2 mt-8 md:mt-0 flex justify-center"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeInRight}
+      >
+        <div className="w-full md:w-4/5 min-h-[250px] overflow-x-auto">
+          <Slider {...sliderSettings}>
+            {stats.map((item, index) => (
+              <div key={index} className="px-2">
+                <div className="bg-green-100 p-6 rounded-lg shadow-lg text-center">
+                  <div className="w-16 h-16 mx-auto mt-4 mb-4 bg-green-700 text-white rounded-full flex items-center justify-center text-2xl">
+                    {item.icon}
                   </div>
+                  <h3 className="text-lg mt-4">
+                    {item.label} <span className="text-black">{item.value}</span>
+                  </h3>
                 </div>
-              ))}
-            </Slider>
-          </motion.div> */}
+              </div>
+            ))}
+          </Slider>
         </div>
-      </div>
+      </motion.div>
+
     </div>
+  </div>
+</section>
+
+
 
 
       {/* 🔹 4 Cards Section - Updated to Match Reference Image */}
-      <div className="w-full flex justify-center py-12">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {[
-          {
-            title: "Offering",
-            description: "Our commitment to sustainable business practices.",
-            buttonText: "Find out more →",
-            image: "/offering.jpg",
-          },
-          {
-            title: "Media",
-            description: "Join our team and grow with us.",
-            buttonText: "Explore Careers →",
-            image: "/media.jpg",
-          },
-          {
-            title: "Our Shareholders",
-            description: "Building long-term value for our stakeholders.",
-            buttonText: "Meet Shareholders →",
-            image: "/shareholders.jpg",
-          },
-          {
-            title: "What is Crystara",
-            description: "Access reports, earnings, and financial data.",
-            buttonText: "View Reports →",
-            image: "/whatcrystara.jpg",
-          },
-        ].map((card, index) => (
-          <motion.div
-            key={index}
-            className="relative w-80 h-72 rounded-lg overflow-hidden shadow-lg"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-          >
-            {/* Background Image */}
-            <img
-              src={card.image}
-              alt={card.title}
-              className="absolute w-full h-full object-cover"
-            />
+      {/* 🔹 4 Cards Section - Updated with Links */}
+<div className="w-full flex justify-center mt-12">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {[
+      {
+        title: "Offering",
+        description: "Our commitment to sustainable business practices.",
+        buttonText: "Find out more →",
+        image: "/offering.jpg",
+        link: "/offering",  // Internal link to Offering section
+      },
+      {
+        title: "Media",
+        description: "Join our team and grow with us.",
+        buttonText: "Explore Careers →",
+        image: "/media.jpg",
+        link: "/media",  // Internal link to Media section
+      },
+      {
+        title: "Our Shareholders",
+        description: "Building long-term value for our stakeholders.",
+        buttonText: "Meet Shareholders →",
+        image: "/shareholders.jpg",
+        link: "/shareholders",  // Internal link to Shareholders section
+      },
+      {
+        title: "What is Crystara",
+        description: "Access reports, earnings, and financial data.",
+        buttonText: "View Reports →",
+        image: "/whatcrystara.jpg",
+        link: "/about",  // Internal link to Reports section
+      },
+    ].map((card, index) => (
+      <motion.div
+        key={index}
+        className="relative w-80 h-72 rounded-lg overflow-hidden shadow-lg"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeInUp}
+      >
+        {/* Background Image */}
+        <img
+          src={card.image}
+          alt={card.title}
+          className="absolute w-full h-full object-cover"
+        />
 
-            {/* Dark Overlay */}
-            <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
-            {/* Content */}
-            <div className="absolute bottom-4 left-4 text-white">
-              <h3 className="text-lg font-bold">{card.title}</h3>
-              <p className="text-sm">{card.description}</p>
+        {/* Content */}
+        <div className="absolute bottom-4 left-4 text-white">
+          <h3 className="text-lg font-bold">{card.title}</h3>
+          <p className="text-sm">{card.description}</p>
 
-              {/* Button */}
-              <button className="mt-2 text-sm bg-white bg-opacity-20 hover:bg-opacity-40 px-3 py-1 rounded-md">
-                {card.buttonText}
-              </button>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </div>
+          {/* Button with Link */}
+          <a href={card.link} className="mt-2 inline-block text-sm bg-white bg-opacity-20 hover:bg-opacity-40 px-3 py-1 rounded-md">
+            {card.buttonText}
+          </a>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+</div>
+
 
       {/* 🔹 Achievements Section (with time graph placeholder) */}
-        <div className="w-full h-screen max-w-7xl mx-auto py-16">
-        <h2 className="text-3xl font-bold text-purple-700 mt-12 mb-6 text-center">Achievements</h2>
+        <div className="w-full h-screen max-w-7xl mx-auto py-16 mt-12">
+        <h2 className="text-4xl font-bold text-purple-700 mt-12 mb-12 text-center">Achievements</h2>
         <motion.div
           className="bg-white p-6 rounded-lg shadow-md"
           initial="hidden"
@@ -387,47 +467,50 @@ function Home() {
         </motion.div>
         </div>
 
-      {/* 🔹 Testimonials Section */}
-      <div className="relative w-full h-auto max-w-7xl mx-auto py-16">
-      {/* Box Container */}
-      <div className="bg-white border border-gray-300 rounded-lg shadow-lg p-8">
-        <motion.div
-          className="relative z-10 text-center"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeInUp}
-        >
-          <h2 className="text-2xl font-bold text-purple-700 mb-6">Testimonials</h2>
+      {/* 🔹 Testimonials Section */} 
+<div className="relative w-full h-auto max-w-7xl mx-auto py-16 mt-12">
+  {/* Box Container */}
+  <motion.div
+    className="relative z-10 text-center"
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true }}
+    variants={fadeInUp}
+  >
+    {/* Heading */}
+    <h2 className="text-3xl font-bold text-purple-700 mb-12">What Our Clients Say</h2>
 
-          <div className="bg-gray-100 p-6 rounded-lg shadow-md mx-auto w-3/4">
-            <Slider {...settings}>
-              {testimonials.map((testimonial, index) => (
-                <div key={index} className="text-center flex flex-col items-center">
-                  {/* Centered Image */}
-                  <div className="flex justify-center items-center w-full">
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.author}
-                      className="w-44 h-56 object-cover object-center square-full shadow-md"
-                    />
-                  </div>
+    <div className="bg-gray-100 p-10 rounded-lg shadow-lg mx-auto w-3/4 md:w-2/3 lg:w-1/2">
+      <Slider {...settings}>
+        {testimonials.map((testimonial, index) => (
+          <div key={index} className="text-center flex flex-col items-center">
+            {/* Centered Image */}
+            <div className="flex justify-center items-center w-full">
+              <img
+                src={testimonial.image}
+                alt={testimonial.author}
+                className="w-24 h-24 object-cover rounded-full border-4 border-purple-500 shadow-md"
+              />
+            </div>
 
-                  <p className="text-gray-700 italic text-lg mt-4">"{testimonial.text}"</p>
-                  <p className="font-semibold mt-2 text-purple-700">{testimonial.author}</p>
-                </div>
-              ))}
-            </Slider>
+            {/* Testimonial Text */}
+            <p className="text-gray-700 italic text-lg mt-6">"{testimonial.text}"</p>
+
+            {/* Author Name & Designation */}
+            <p className="font-bold text-purple-700 mt-4 text-lg">{testimonial.author}</p>
+            <p className="text-gray-500 text-sm">{testimonial.designation}</p>
           </div>
-        </motion.div>
-      </div>
+        ))}
+      </Slider>
     </div>
+  </motion.div>
+</div>
+
 
 
       {/* 🔹 News & Blog Section */}
       <div className="w-full max-w-7xl mx-auto py-16">
       {/* Box Container */}
-      <div className="bg-white border border-gray-300 rounded-lg shadow-lg p-6">
         <h2 className="text-2xl font-bold text-purple-900 mt-6 mb-4 text-center">
           Latest News
         </h2>
@@ -453,7 +536,6 @@ function Home() {
             </div>
           ))}
         </Slider>
-      </div>
     </div>
     </div>
   );

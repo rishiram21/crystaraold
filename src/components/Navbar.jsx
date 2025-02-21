@@ -1,183 +1,153 @@
-import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { FaChevronDown, FaBars, FaTimes } from "react-icons/fa";
 
 function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
+  const [dropdownOpen, setDropdownOpen] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate(); // Use for navigation
 
-  // Function to handle scrolling to the top and closing the menu
-  const handleLinkClick = () => {
-    window.scrollTo(0, 0);
-    setIsMenuOpen(false);
-  };
-
-  // Function to check if a link is active
-  const isActive = (path) => location.pathname === path;
+  // Close dropdown when clicking outside (for mobile)
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (!e.target.closest(".dropdown-container")) {
+        setDropdownOpen(null);
+      }
+    };
+    if (mobileMenuOpen || dropdownOpen) {
+      document.addEventListener("click", handleOutsideClick);
+    } else {
+      document.removeEventListener("click", handleOutsideClick);
+    }
+    return () => document.removeEventListener("click", handleOutsideClick);
+  }, [mobileMenuOpen, dropdownOpen]);
 
   return (
-    <nav className="bg-white shadow-md font-cambria fixed px-10 left-0 right-0 z-50">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div
-            onClick={handleLinkClick}
-            className="flex items-center cursor-pointer bg-gray-100 p-4 rounded-2xl shadow-md inline-block"
-          >
-            <Link to="/" className="text-2xl font-bold text-purple-700">
-              Crystara
-              <span className="text-gray-600 text-lg">
-                <br />
-                Sugar Pvt Ltd
-              </span>
-            </Link>
-          </div>
+    <nav className="bg-white shadow-md font-sans fixed top-0 left-0 right-0 z-50">
+      <div className="container mx-auto px-6 flex items-center justify-between h-16">
+        
+        {/* Left Side - Company Name */}
+        <div className="px-10">
+  <a 
+    href="/" 
+    className="text-xl font-bold text-purple-700 block"
+    onClick={(e) => {
+      e.preventDefault(); // Prevent default navigation
+      window.location.href = "/"; // Force reload
+    }}
+  >
+    Crystara
+    <span className="text-gray-600 text-sm block">Sugar Pvt Ltd</span>
+  </a>
+</div>
 
-          {/* Mobile Menu Button */}
-          <div className="lg:hidden flex items-center">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-600 hover:text-purple-700"
-            >
-              {isMenuOpen ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              )}
-            </button>
-          </div>
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-gray-700 text-2xl"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          {mobileMenuOpen ? <FaTimes /> : <FaBars />}
+        </button>
 
-          {/* Desktop Menu */}
-          <div className="hidden lg:flex space-x-4">
-            <Link
-              to="/about"
-              onClick={handleLinkClick}
-              className={`block px-4 py-2 border rounded-md transition duration-300 ${
-                isActive("/about") ? "bg-purple-700 text-white" : "text-gray-600 hover:bg-purple-700 hover:text-white"
-              }`}
-            >
-              About Us
-            </Link>
-            <Link
-              to="/offering"
-              onClick={handleLinkClick}
-              className={`block px-4 py-2 border rounded-md transition duration-300 ${
-                isActive("/offering") ? "bg-purple-700 text-white" : "text-gray-600 hover:bg-purple-700 hover:text-white"
-              }`}
-            >
-              Offering
-            </Link>
-            <Link
-              to="/finance"
-              onClick={handleLinkClick}
-              className={`block px-4 py-2 border rounded-md transition duration-300 ${
-                isActive("/finance") ? "bg-purple-700 text-white" : "text-gray-600 hover:bg-purple-700 hover:text-white"
-              }`}
-            >
-              Finance
-            </Link>
-            <Link
-              to="/media"
-              onClick={handleLinkClick}
-              className={`block px-4 py-2 border rounded-md transition duration-300 ${
-                isActive("/media") ? "bg-purple-700 text-white" : "text-gray-600 hover:bg-purple-700 hover:text-white"
-              }`}
-            >
-              Media
-            </Link>
-          </div>
+        {/* Desktop Menu */}
+        <div className="hidden md:flex space-x-6 items-center">
+          {renderMenuLinks(dropdownOpen, setDropdownOpen, false, null, navigate)}
         </div>
       </div>
 
-      {/* Mobile Menu with Animation */}
+      {/* Mobile Menu */}
       <AnimatePresence>
-        {isMenuOpen && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              className="fixed inset-0 bg-black bg-opacity-50 z-40"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsMenuOpen(false)}
-            ></motion.div>
-
-            {/* Slide-in Menu */}
-            <motion.div
-              className="fixed top-0 right-0 h-full w-2/3 bg-white shadow-lg z-50 flex flex-col items-center py-10 space-y-6"
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-            >
-              <Link
-                to="/about"
-                onClick={handleLinkClick}
-                className={`block px-6 py-3 text-lg font-semibold transition duration-300 ${
-                  isActive("/about") ? "bg-purple-700 text-white rounded-md" : "text-gray-600 hover:bg-purple-700 hover:text-white rounded-md"
-                }`}
-              >
-                About Us
-              </Link>
-              <Link
-                to="/offering"
-                onClick={handleLinkClick}
-                className={`block px-6 py-3 text-lg font-semibold transition duration-300 ${
-                  isActive("/offering") ? "bg-purple-700 text-white rounded-md" : "text-gray-600 hover:bg-purple-700 hover:text-white rounded-md"
-                }`}
-              >
-                Offering
-              </Link>
-              <Link
-                to="/finance"
-                onClick={handleLinkClick}
-                className={`block px-6 py-3 text-lg font-semibold transition duration-300 ${
-                  isActive("/finance") ? "bg-purple-700 text-white rounded-md" : "text-gray-600 hover:bg-purple-700 hover:text-white rounded-md"
-                }`}
-              >
-                Finance
-              </Link>
-              <Link
-                to="/media"
-                onClick={handleLinkClick}
-                className={`block px-6 py-3 text-lg font-semibold transition duration-300 ${
-                  isActive("/media") ? "bg-purple-700 text-white rounded-md" : "text-gray-600 hover:bg-purple-700 hover:text-white rounded-md"
-                }`}
-              >
-                Media
-              </Link>
-            </motion.div>
-          </>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="md:hidden bg-white shadow-md"
+          >
+            <div className="flex flex-col items-center py-4 space-y-3">
+              {renderMenuLinks(dropdownOpen, setDropdownOpen, true, setMobileMenuOpen, navigate)}
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </nav>
   );
 }
+
+const renderMenuLinks = (dropdownOpen, setDropdownOpen, isMobile = false, setMobileMenuOpen, navigate) => {
+  const menus = [
+    { name: "About Us", subMenu: ["Company overview", "Our Team"], path: "/about" },
+    { name: "Offering", subMenu: ["Products", "Services"], path: "/offering" },
+    { name: "Finance", subMenu: ["Financials", "Reports"], path: "/finance" },
+  ];
+
+  return (
+    <>
+      {menus.map((menu, idx) => (
+        <div 
+          key={idx} 
+          className="relative w-full md:w-auto dropdown-container"
+          onMouseEnter={() => !isMobile && setDropdownOpen(menu.name)}
+          onMouseLeave={() => !isMobile && setDropdownOpen(null)}
+        >
+          <button
+            onClick={(e) => {
+              e.stopPropagation(); // Prevent closing immediately
+              if (isMobile) {
+                if (dropdownOpen === menu.name) {
+                  navigate(menu.path); // Navigate on second tap
+                  setDropdownOpen(null);
+                  setMobileMenuOpen(false);
+                } else {
+                  setDropdownOpen(menu.name);
+                }
+              } else {
+                navigate(menu.path);
+              }
+            }}
+            className="w-full md:w-auto px-4 py-2 rounded-xl text-lg font-medium text-gray-700 hover:bg-purple-400 hover:text-black flex items-center justify-between md:inline-flex"
+          >
+            {menu.name} <FaChevronDown className="ml-1" />
+          </button>
+
+          <AnimatePresence>
+            {dropdownOpen === menu.name && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                className={`absolute ${isMobile ? "relative w-full" : "right-0"} bg-white shadow-lg rounded-xl mt-2 w-44 z-50`}
+              >
+                {menu.subMenu.map((item, i) => (
+                  <Link 
+                    key={i} 
+                    to={`${menu.path}/${item.toLowerCase().replace(" ", "-")}`} 
+                    className="block px-4 py-2 hover:bg-gray-100"
+                    onClick={() => {
+                      setDropdownOpen(null);
+                      if (isMobile) setMobileMenuOpen(false);
+                    }}
+                  >
+                    {item}
+                  </Link>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      ))}
+
+      {/* Media (No Dropdown) */}
+      <Link
+        to="/media"
+        className="w-full md:w-auto bg-gray-200 px-4 py-2 rounded-xl shadow-md text-lg font-medium text-gray-700 hover:bg-purple-700 hover:text-white block md:inline-block text-center"
+        onClick={() => isMobile && setMobileMenuOpen(false)}
+      >
+        Media
+      </Link>
+    </>
+  );
+};
 
 export default Navbar;
