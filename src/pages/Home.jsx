@@ -39,7 +39,7 @@ function Home() {
   const sliderSettings = {
     arrows: false,
     infinite: true,
-    speed: 3000,
+    speed: 2000,
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
@@ -58,12 +58,12 @@ function Home() {
 
   // Cards Data
   const stats = [
-    { icon: "🌍", label: "1.Operating Since", value: "2016" },
-    { icon: "👥", label: "2.Over", value: "50 Employees" },
-    { icon: "🏢", label: "3.Offices Globally", value: "02" },
-    { icon: "📦", label: "4.Products Available", value: "100+" },
-    { icon: "💼", label: "5.Corporate Clients", value: "500+" },
-    { icon: "🚀", label: "6.Annual Growth ", value: "15%" },
+    { icon: "🌍", label: "1.Title here", value: "0000" },
+    { icon: "👥", label: "2.Title here", value: "0000" },
+    { icon: "🏢", label: "3.Title here", value: "0000" },
+    { icon: "📦", label: "4.Title here", value: "0000" },
+    { icon: "💼", label: "5.Title here", value: "0000" },
+    { icon: "🚀", label: "6.Title here", value: "0000" },
   ];
 
   //Graph
@@ -310,7 +310,6 @@ function Home() {
   </section>
 </div>
 
-
   {/* Company Overview Section */}
   <section className="w-full px-10 py-16 mt-12">
   <h2 className="text-4xl font-bold text-purple-700 text-center mt-12 mb-12">Company Overview</h2>
@@ -336,8 +335,6 @@ function Home() {
           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor 
           in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt 
           in culpa qui officia deserunt mollit anim id est laborum."
-
-
         </p>
         <button className="bg-purple-700 text-white px-4 py-2 rounded-full flex items-center">
           <span className="mr-2">Learn More</span>
@@ -358,11 +355,11 @@ function Home() {
             {stats.map((item, index) => (
               <div key={index} className="px-2">
                 <div className="bg-green-100 p-6 rounded-lg shadow-lg text-center">
-                  <div className="w-16 h-16 mx-auto mt-4 mb-4 bg-green-700 text-white rounded-full flex items-center justify-center text-2xl">
+                  <div className="w-16 h-16 mx-auto mt-8 mb-8 bg-green-700 text-white rounded-full flex items-center justify-center text-xl">
                     {item.icon}
                   </div>
-                  <h3 className="text-lg mt-4">
-                    {item.label} <span className="text-black">{item.value}</span>
+                  <h3 className="text-sm mt-4 mb-4">
+                    {item.label} <br></br> <span className="text-black">{item.value}</span>
                   </h3>
                 </div>
               </div>
@@ -375,10 +372,6 @@ function Home() {
   </div>
 </section>
 
-
-
-
-      {/* 🔹 4 Cards Section - Updated to Match Reference Image */}
       {/* 🔹 4 Cards Section - Updated with Links */}
 <div className="w-full flex justify-center mt-12">
   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -468,63 +461,64 @@ function Home() {
         </div>
 
       {/* 🔹 Testimonials Section */} 
-<div className="relative w-full h-auto max-w-7xl mx-auto py-16 mt-12">
-  {/* Box Container */}
-  <motion.div
-    className="relative z-10 text-center"
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true }}
-    variants={fadeInUp}
-  >
-    {/* Heading */}
-    <h2 className="text-3xl font-bold text-purple-700 mb-12">What Our Clients Say</h2>
+      <div className="relative w-full h-auto max-w-7xl mx-auto py-16 mt-12">
+        {/* Box Container */}
+        <motion.div
+          className="relative z-10 text-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+        >
+          {/* Heading */}
+          <h2 className="text-3xl font-bold text-purple-700 mb-12">What Our Clients Say</h2>
 
-    <div className="bg-gray-100 p-10 rounded-lg shadow-lg mx-auto w-3/4 md:w-2/3 lg:w-1/2">
-      <Slider {...settings}>
-        {testimonials.map((testimonial, index) => (
-          <div key={index} className="text-center flex flex-col items-center">
-            {/* Centered Image */}
-            <div className="flex justify-center items-center w-full">
-              <img
-                src={testimonial.image}
-                alt={testimonial.author}
-                className="w-24 h-24 object-cover rounded-full border-4 border-purple-500 shadow-md"
-              />
-            </div>
+          <div className="bg-gray-100 p-10 rounded-lg shadow-lg mx-auto w-3/4 md:w-2/3 lg:w-1/2">
+            <Slider {...settings}>
+              {testimonials.map((testimonial, index) => (
+                <div key={index} className="text-center flex flex-col items-center">
+                  {/* Centered Image */}
+                  <div className="flex justify-center items-center w-full">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.author}
+                      className="w-24 h-24 object-cover rounded-full border-4 border-purple-500 shadow-md"
+                    />
+                  </div>
 
-            {/* Testimonial Text */}
-            <p className="text-gray-700 italic text-lg mt-6">"{testimonial.text}"</p>
+                  {/* Testimonial Text */}
+                  <p className="text-gray-700 italic text-lg mt-6">"{testimonial.text}"</p>
 
-            {/* Author Name & Designation */}
-            <p className="font-bold text-purple-700 mt-4 text-lg">{testimonial.author}</p>
-            <p className="text-gray-500 text-sm">{testimonial.designation}</p>
+                  {/* Author Name & Designation */}
+                  <p className="font-bold text-purple-700 mt-4 text-lg">{testimonial.author}</p>
+                  <p className="text-gray-500 text-sm">{testimonial.designation}</p>
+                </div>
+              ))}
+            </Slider>
           </div>
-        ))}
-      </Slider>
-    </div>
-  </motion.div>
-</div>
+        </motion.div>
+      </div>
 
 
 
       {/* 🔹 News & Blog Section */}
-      <div className="w-full max-w-7xl mx-auto py-16">
-      {/* Box Container */}
-        <h2 className="text-2xl font-bold text-purple-900 mt-6 mb-4 text-center">
-          Latest News
-        </h2>
+      <div className="w-full max-w-7xl mx-auto py-16 px-4">
+      {/* Section Title */}
+      <h2 className="text-2xl font-bold text-purple-900 mt-6 mb-4 text-center">
+        Latest News
+      </h2>
 
-        {/* Read More Link */}
-        <div className="text-green-600 font-semibold text-right mb-4 cursor-pointer">
-          Read our articles →
-        </div>
+      {/* Read More Link */}
+      <div className="text-green-600 font-semibold text-right mb-4 cursor-pointer">
+        Read our articles →
+      </div>
 
-        {/* News Slider */}
+      {/* Slider for Desktop | Single Card for Mobile */}
+      <div className="hidden md:block">
         <Slider {...settings1}>
           {newsArticles.map((news, index) => (
             <div key={index} className="p-4">
-              <div className="bg-gray-100 p-4 h-[180px] rounded-lg shadow-md text-left flex flex-col justify-between">
+              <div className="bg-gray-100 p-4 h-[180px] rounded-lg shadow-md flex flex-col justify-between">
                 <p className="text-gray-500 text-sm">{news.date}</p>
                 <h3 className="text-sm text-gray-800 mt-2 mb-2 line-clamp-2">
                   {news.title}
@@ -536,6 +530,20 @@ function Home() {
             </div>
           ))}
         </Slider>
+      </div>
+
+      {/* Single Card View for Mobile */}
+      <div className="block md:hidden">
+        <div className="bg-gray-100 p-4 h-auto rounded-lg shadow-md flex flex-col justify-between">
+          <p className="text-gray-500 text-xs">{newsArticles[0].date}</p>
+          <h3 className="text-sm text-gray-800 mt-2 mb-2 line-clamp-2">
+            {newsArticles[0].title}
+          </h3>
+          <a href={newsArticles[0].link} className="text-green-600 mt-2 inline-flex items-center text-sm">
+            Read more →
+          </a>
+        </div>
+      </div>
     </div>
     </div>
   );
