@@ -17,32 +17,32 @@ function Offering() {
     {
       name: "White Sugar",
       image: "/white-sugar.jpg",
-      description: "MEIR Commodities offers multiple types of sugar, each serving distinct uses in both industrial and household applications."
+      description: "White sugar is a refined sweetener made from sugarcane or sugar beets, commonly used in cooking, baking, and beverages."
     },
     {
       name: "Brown Sugar",
       image: "/brown-sugar.jpg",
-      description: "Khandsari is a type of unrefined raw sugar that retains more natural minerals and molasses than refined sugar."
+      description: "Brown sugar is refined sugar with molasses, giving it a moist texture and rich caramel-like flavor."
     },
     {
       name: "Jaggery",
       image: "/jaggery.jpg",
-      description: "Jaggery is a traditional, non-centrifugal cane sugar consumed in Asia and Africa, known for its rich taste and health benefits."
+      description: "Jaggery is an unrefined natural sweetener made from sugarcane or palm sap, rich in minerals and a deep caramel flavor."
     },
     {
       name: "s30 Sugar",
       image: "/s30-sugar.jpg",
-      description: "Muscovado is an unrefined dark brown sugar with a strong molasses flavor, perfect for baking and sweetening drinks."
+      description: "S30 sugar is a medium-grade refined sugar with small, uniform crystals, commonly used in household and industrial applications."
     },
     {
       name: "Raw Sugar",
       image: "/raw-sugar.jpg",
-      description: "Raw sugar is minimally processed and retains more natural nutrients than refined sugar, giving it a slightly golden hue."
+      description: "Raw sugar is minimally processed sugar with a golden color and coarse crystals, some molasses for a mild caramel flavor."
     },
     {
       name: "m30 Sugar",
       image: "/m30-sugar.jpg",
-      description: "Demerara sugar has large golden crystals and a crunchy texture, commonly used in coffee and desserts."
+      description: "M30 sugar is a refined white sugar with medium-sized crystals, commonly used in household and industrial applications."
     }
   ];
 
@@ -52,7 +52,7 @@ function Offering() {
         
         {/* Hero Section */}
         <motion.div
-          className="relative w-full h-56 flex items-center rounded-lg shadow-md mb-8 bg-cover bg-center"
+          className="relative w-full h-48 flex items-center rounded-lg shadow-md mb-8 bg-cover bg-center"
           style={{ backgroundImage: "url('/offeringimg.jpg')" }}
           initial="hidden"
           animate="visible"
@@ -60,7 +60,7 @@ function Offering() {
         >
           <div className="absolute inset-0 bg-black bg-opacity-50 rounded-lg"></div>
           <div className="relative w-full flex flex-col items-center p-8 text-center">
-            <h1 className="text-3xl md:text-6xl font-bold text-white">Our Offerings</h1>
+            <h1 className="text-2xl md:text-5xl font-bold text-white">Our Offering</h1>
           </div>
         </motion.div>
 

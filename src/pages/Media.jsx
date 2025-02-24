@@ -11,9 +11,9 @@ const events = [
 ];
 
 const videos = [
-  { title: "Video 1", thumbnail: "/video1.jpg", src: "/videogallery1.mp4" },
-  { title: "Video 2", thumbnail: "/video2.jpg", src: "/videogallery2.mp4" },
-  { title: "Video 3", thumbnail: "/video3.jpg", src: "/videogallery3.mp4" },
+  { title: "Video 1", thumbnail: "/thumbnail.jpg", src: "/videogallery1.mp4" },
+  { title: "Video 2", thumbnail: "/thumbnail.jpg", src: "/videogallery2.mp4" },
+  { title: "Video 3", thumbnail: "/thumbnail.jpg", src: "/videogallery3.mp4" },
 ];
 
 const fadeInUp = {
@@ -40,9 +40,9 @@ function Media() {
     <motion.div className="bg-purple min-h-screen py-12" initial="hidden" animate="visible" variants={staggerContainer}>
       <div className="container mx-auto px-6 md:px-20 py-8">
         
-        <motion.div className="relative w-full h-56 flex items-center rounded-lg shadow-md mb-5 bg-cover bg-center" style={{ backgroundImage: "url('/mediaimg.jpg')", minHeight: "200px" }} variants={fadeInUp}>
+        <motion.div className="relative w-full h-48 flex items-center rounded-lg shadow-md mb-5 bg-cover bg-center" style={{ backgroundImage: "url('/mediaimg.jpg')", minHeight: "200px" }} variants={fadeInUp}>
           <div className="absolute inset-0 bg-black bg-opacity-50 rounded-lg"></div>
-          <h1 className="relative text-4xl md:text-6xl font-bold text-white mx-auto">Media</h1>
+          <h1 className="relative text-2xl md:text-5xl font-bold text-white mx-auto">Media</h1>
         </motion.div>
 
         <div className="flex justify-center mb-6">

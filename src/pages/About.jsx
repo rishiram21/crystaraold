@@ -118,7 +118,7 @@ function About() {
         
         {/* About Us Header */}
         <motion.div
-          className="relative w-full h-56 flex items-center rounded-lg shadow-md mb-10 bg-cover bg-center"
+          className="relative w-full h-48 flex items-center rounded-lg shadow-md mb-10 bg-cover bg-center"
           style={{ backgroundImage: "url('/aboutimg.jpg')" }}
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -126,7 +126,7 @@ function About() {
         >
           <div className="absolute inset-0 bg-black bg-opacity-50 rounded-lg"></div>
           <div className="relative w-full flex flex-col items-center p-8 text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-white">About Us</h1>
+            <h1 className="text-2xl md:text-5xl font-bold text-white">About Us</h1>
           </div>
         </motion.div>
 

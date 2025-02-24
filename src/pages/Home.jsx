@@ -9,6 +9,7 @@ import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement
 import Slider from "react-slick";  
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Link } from "react-router-dom";
 
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
@@ -17,9 +18,9 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, T
 function Home() {
   // Animation Variants
   const fadeInUp = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
-  };
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
 
   const fadeInText = {
     hidden: { opacity: 0, x: -30 },
@@ -65,6 +66,38 @@ function Home() {
     { icon: "💼", label: "5.Title here", value: "0000" },
     { icon: "🚀", label: "6.Title here", value: "0000" },
   ];
+
+  const cards = [
+    {
+      title: "Offering",
+      description: "Our commitment to sustainable business practices.",
+      buttonText: "Find out more →",
+      image: "/offering.jpg",
+      link: "/offering",
+    },
+    {
+      title: "Media",
+      description: "Join our team and grow with us.",
+      buttonText: "Explore Careers →",
+      image: "/media.jpg",
+      link: "/media",
+    },
+    {
+      title: "Our Shareholders",
+      description: "Building long-term value for our stakeholders.",
+      buttonText: "Meet Shareholders →",
+      image: "/shareholders.jpg",
+      link: "/shareholders",
+    },
+    {
+      title: "What is Crystara",
+      description: "Access reports, earnings, and financial data.",
+      buttonText: "View Reports →",
+      image: "/whatcrystara.jpg",
+      link: "/about",
+    },
+  ];
+
 
   //Graph
   const data = {
@@ -126,7 +159,7 @@ function Home() {
   const newsArticles = [
     {
       date: "22/02/2025",
-      title: "Notice of 2024 half-year financial results",
+      title: "Notice of 2025 half-year financial results",
       link: "#",
     },
     {
@@ -136,12 +169,12 @@ function Home() {
     },
     {
       date: "11/08/2024",
-      title: "Notice of 2023 full-year financial results",
+      title: "Notice of 2024 full-year financial results",
       link: "#",
     },
     {
       date: "24/04/2024",
-      title: "Notice of 2023 half-year financial results",
+      title: "Notice of 2024 half-year financial results",
       link: "#",
     },
     {
@@ -157,15 +190,25 @@ function Home() {
   ];
   
   const settings1 = {
-    dots:true,
-    arrows: false,
+    arrows:false,
     infinite: true,
     speed: 2000,
-    slidesToShow: 3,
+    autoplay: true,         // Enable auto-slide
+    autoplaySpeed: 1500,    // Slide every 3 seconds
+    slidesToShow: 3,        // Default: Show 3 slides on Desktop
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-  };
+    responsive: [
+      {
+        breakpoint: 768,     // Below 768px (Mobile View)
+        settings: {
+          slidesToShow: 1,   // Show only 1 card in mobile view
+          slidesToScroll: 1,
+          autoplay: true,    // Auto-slide for mobile too
+          autoplaySpeed: 3000,
+        },
+      },
+    ],
+  };  
 
   return (
     <div className="w-full">
@@ -233,7 +276,7 @@ function Home() {
         </Swiper>
       </motion.div>
 
-      <div className="w-full max-w-7xl mx-auto mt-12 pt-16">
+  <div className="w-full max-w-7xl mx-auto mt-12 pt-16">
   {/* About Us Section */}
   <section className="w-full px-10 mt-12 mb-16">
     <h2 className="text-4xl font-bold text-purple-700 text-center mt-12 mb-12">About Us</h2>
@@ -246,11 +289,11 @@ function Home() {
     >
       {/* Video Section */}
       <motion.div
-  className="w-full flex flex-col md:flex-row items-center md:items-start gap-8"
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true }}
->
+      className="w-full flex flex-col md:flex-row items-center md:items-start gap-8"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      >
   {/* Video Section (Left) */}
   <motion.div className="w-full md:w-1/2" variants={fadeInLeft}>
     <video className="w-full h-64 md:h-96 rounded-lg" autoPlay loop muted playsInline>
@@ -336,10 +379,12 @@ function Home() {
           in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt 
           in culpa qui officia deserunt mollit anim id est laborum."
         </p>
+        <Link to="/about">
         <button className="bg-purple-700 text-white px-4 py-2 rounded-full flex items-center">
           <span className="mr-2">Learn More</span>
           <span className="text-lg">→</span>
         </button>
+      </Link>
       </motion.div>
 
       {/* Auto Slider */}
@@ -372,71 +417,44 @@ function Home() {
   </div>
 </section>
 
-      {/* 🔹 4 Cards Section - Updated with Links */}
 <div className="w-full flex justify-center mt-12">
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-    {[
-      {
-        title: "Offering",
-        description: "Our commitment to sustainable business practices.",
-        buttonText: "Find out more →",
-        image: "/offering.jpg",
-        link: "/offering",  // Internal link to Offering section
-      },
-      {
-        title: "Media",
-        description: "Join our team and grow with us.",
-        buttonText: "Explore Careers →",
-        image: "/media.jpg",
-        link: "/media",  // Internal link to Media section
-      },
-      {
-        title: "Our Shareholders",
-        description: "Building long-term value for our stakeholders.",
-        buttonText: "Meet Shareholders →",
-        image: "/shareholders.jpg",
-        link: "/shareholders",  // Internal link to Shareholders section
-      },
-      {
-        title: "What is Crystara",
-        description: "Access reports, earnings, and financial data.",
-        buttonText: "View Reports →",
-        image: "/whatcrystara.jpg",
-        link: "/about",  // Internal link to Reports section
-      },
-    ].map((card, index) => (
-      <motion.div
-        key={index}
-        className="relative w-80 h-72 rounded-lg overflow-hidden shadow-lg"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeInUp}
-      >
-        {/* Background Image */}
-        <img
-          src={card.image}
-          alt={card.title}
-          className="absolute w-full h-full object-cover"
-        />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {cards.map((card, index) => (
+          <motion.div
+            key={index}
+            className="relative w-80 h-72 rounded-lg overflow-hidden shadow-lg"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+          >
+            {/* Background Image */}
+            <img
+              src={card.image}
+              alt={card.title}
+              className="absolute w-full h-full object-cover"
+            />
 
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+            {/* Dark Overlay */}
+            <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
-        {/* Content */}
-        <div className="absolute bottom-4 left-4 text-white">
-          <h3 className="text-lg font-bold">{card.title}</h3>
-          <p className="text-sm">{card.description}</p>
+            {/* Content */}
+            <div className="absolute bottom-4 left-4 text-white">
+              <h3 className="text-lg font-bold">{card.title}</h3>
+              <p className="text-sm">{card.description}</p>
 
-          {/* Button with Link */}
-          <a href={card.link} className="mt-2 inline-block text-sm bg-white bg-opacity-20 hover:bg-opacity-40 px-3 py-1 rounded-md">
-            {card.buttonText}
-          </a>
-        </div>
-      </motion.div>
-    ))}
-  </div>
-</div>
+              {/* Button with React Router Link */}
+              <Link
+                to={card.link}
+                className="mt-2 inline-block text-sm bg-white bg-opacity-20 hover:bg-opacity-40 px-3 py-1 rounded-md"
+              >
+                {card.buttonText}
+              </Link>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
 
 
       {/* 🔹 Achievements Section (with time graph placeholder) */}
@@ -514,36 +532,22 @@ function Home() {
       </div>
 
       {/* Slider for Desktop | Single Card for Mobile */}
-      <div className="hidden md:block">
-        <Slider {...settings1}>
-          {newsArticles.map((news, index) => (
-            <div key={index} className="p-4">
-              <div className="bg-gray-100 p-4 h-[180px] rounded-lg shadow-md flex flex-col justify-between">
-                <p className="text-gray-500 text-sm">{news.date}</p>
-                <h3 className="text-sm text-gray-800 mt-2 mb-2 line-clamp-2">
-                  {news.title}
-                </h3>
-                <a href={news.link} className="text-green-600 mt-2 inline-flex items-center">
-                  Read more →
-                </a>
-              </div>
-            </div>
-          ))}
-        </Slider>
-      </div>
-
-      {/* Single Card View for Mobile */}
-      <div className="block md:hidden">
-        <div className="bg-gray-100 p-4 h-auto rounded-lg shadow-md flex flex-col justify-between">
-          <p className="text-gray-500 text-xs">{newsArticles[0].date}</p>
-          <h3 className="text-sm text-gray-800 mt-2 mb-2 line-clamp-2">
-            {newsArticles[0].title}
-          </h3>
-          <a href={newsArticles[0].link} className="text-green-600 mt-2 inline-flex items-center text-sm">
-            Read more →
-          </a>
+      <Slider {...settings1}>
+      {newsArticles.map((news, index) => (
+        <div key={index} className="p-4">
+          <div className="bg-gray-100 p-4 h-[180px] rounded-lg shadow-md flex flex-col justify-between">
+            <p className="text-gray-500 text-sm">{news.date}</p>
+            <h3 className="text-sm text-gray-800 mt-2 mb-2 line-clamp-2">
+              {news.title}
+            </h3>
+            <a href={news.link} className="text-green-600 mt-2 inline-flex items-center">
+              Read more →
+            </a>
+          </div>
         </div>
-      </div>
+      ))}
+    </Slider>
+
     </div>
     </div>
   );

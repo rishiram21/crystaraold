@@ -5,9 +5,8 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Media from './pages/Media'
 import Offering from './pages/Offering'
-import Finance from './pages/Finance'
 import Contact from './pages/Contact'
-
+import Fin from './pages/Fin'
 
 function App() {
   return (
@@ -20,7 +19,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/offering" element={<Offering />} />
-            <Route path="/finance" element={<Finance />} />
+            <Route path="/finance" element={<Fin />} />
             <Route path="/media" element={<Media />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
